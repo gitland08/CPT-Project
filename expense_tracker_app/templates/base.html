@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #fff; 
+      background: linear-gradient(45deg, #49a09d, #5f2c82); 
+      margin: 0; 
+      min-height: 100vh; 
+    }
+
+    .container {
+      padding: 20px; 
+      border-radius: 5px; 
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Times New Roman", serif;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #fff; 
+    }
+
+    .navbar {
+      background-color: #333;
+    }
+
+    .navbar-brand {
+      font-size: 24px;
+      color: #fff; 
+    }
+
+    .navbar-nav .nav-link {
+      font-size: 18px;
+      color: #fff; /* Set text color to white */
+    }
+
+    .table {
+      font-size: 14px;
+    }
+
+    .table th {
+      font-weight: bold;
+      background-color: #55608f; 
+      color: #fff; 
+    }
+
+    .table td {
+      position: relative;
+      color: #fff; 
+    }
+
+    .table td:hover:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -9999px;
+      bottom: -9999px;
+      background-color: rgba(255,255,255,0.2);
+      z-index: -1;
+    }
+
+    .btn {
+      font-size: 14px;
+      color: #fff; 
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'expense_list' %}">Expense Tracker</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'expense_list' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_expense' %}">Add Expense</a>
+          </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Log In</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>
