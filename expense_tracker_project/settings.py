@@ -11,7 +11,7 @@ SECRET_KEY = "django-insecure-ve8u369sqor%(%0$l(o)0=yum@6!k9#z_0ey5mzb^2y1o2)1r@
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = expense-tracker-app.azurewebsites.net, 127.0.0.1
 
 
 
