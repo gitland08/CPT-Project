@@ -1,17 +1,16 @@
-
 from pathlib import Path
-
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(BASE_DIR / '.env')
 
-
-SECRET_KEY = "django-insecure-ve8u369sqor%(%0$l(o)0=yum@6!k9#z_0ey5mzb^2y1o2)1r@"
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 DEBUG = True
 
-ALLOWED_HOSTS = expense-tracker-app.azurewebsites.net, 127.0.0.1
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 
 
 
