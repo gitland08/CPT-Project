@@ -10,3 +10,4 @@ six
 sqlparse
 tenacity
 tzdata
+python-dotenv
